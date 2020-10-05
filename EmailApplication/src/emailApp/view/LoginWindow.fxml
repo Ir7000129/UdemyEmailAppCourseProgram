@@ -16,7 +16,7 @@
       <TextField fx:id="emailAddressField" layoutX="151.0" layoutY="136.0" AnchorPane.leftAnchor="151.0" AnchorPane.topAnchor="136.0" />
       <StackPane blendMode="MULTIPLY" prefHeight="90.0" prefWidth="606.0" style="-fx-background-color: #1ECBE1;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label text="Rogue Elements " wrapText="true">
+            <Label text="Rogue Elements " wrapText="true"> 
                <font>
                   <Font name="Bebas Regular" size="36.0" />
                </font>

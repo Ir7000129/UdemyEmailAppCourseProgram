@@ -41,7 +41,7 @@ public class ViewFactory {
         BaseController controller = new OptionsWindowController(this,emailManager,"OptionsWindow.fxml");
         stageShowing(controller);
     }
-    
+         
 //    public void showLoginWindow() throws IOException {
 //    	var fxmlLoader = new FXMLLoader(getClass().getResource("LoginWindow.fxml"));
 //    	Parent parent = fxmlLoader.load();
