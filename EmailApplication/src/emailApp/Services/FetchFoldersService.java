@@ -14,7 +14,6 @@ public class FetchFoldersService extends Service<Void>{
 	private EmailTreeItem<String> foldersRoot;
 	
 	public FetchFoldersService(Store store, EmailTreeItem<String> foldersRoot) {
-		super();
 		this.store = store;
 		this.foldersRoot = foldersRoot;
 	}
@@ -26,17 +25,18 @@ public class FetchFoldersService extends Service<Void>{
 			protected Void call() throws Exception{
 				FetchFolders();
 				return null;
-			}
-
-			private void FetchFolders() throws MessagingException {				
-				Folder[] folder = store.getDefaultFolder().list();
-				handleFolders(folder, foldersRoot);
-			}
-
-			private void handleFolders(Folder[] folder, EmailTreeItem<String> foldersRoot) {
-				// TODO Auto-generated method stub
-				
-			}
+			}			
 		};
-	}
+	};
+		private void FetchFolders() throws MessagingException {				
+			Folder[] folders = store.getDefaultFolder().list();
+			handleFolders(folders, foldersRoot);
+		}
+	
+		private void handleFolders(Folder[] folders, EmailTreeItem<String> foldersRoot) {
+			for (Folder folder:folders) {
+				var emailTreeITem = new EmailTreeItem<String>(folder.getName());
+				foldersRoot.getChildren().add(emailTreeITem);
+			}
+		}
 }
