@@ -35,6 +35,9 @@ public class OptionsWindowController extends BaseController implements Initializ
 
     @FXML
     void cancelAction() {
+    	viewFactory.setColorTheme(themeChoice.getValue());
+        viewFactory.setFontSize(FontSize.values()[(int)(fontSlider.getValue())]);
+        viewFactory.updateStyles();
         Stage stage = (Stage) fontSlider.getScene().getWindow();
         viewFactory.closeShowingStage(stage);
         System.out.println("Options window closed");

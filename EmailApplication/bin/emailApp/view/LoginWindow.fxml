@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="289.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="201.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button layoutX="374.0" layoutY="149.0" mnemonicParsing="false" onAction="#LoginAction" prefHeight="37.0" prefWidth="129.0" text="Login" AnchorPane.leftAnchor="374.0" AnchorPane.topAnchor="149.0" />
       <Label layoutX="62.0" layoutY="140.0" text="Email Address:" AnchorPane.leftAnchor="62.0" AnchorPane.topAnchor="140.0" />
