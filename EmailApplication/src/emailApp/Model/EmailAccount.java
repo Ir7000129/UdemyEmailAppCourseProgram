@@ -4,6 +4,9 @@ import java.util.Properties;
 
 import javax.mail.Store;
 
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
+
 public class EmailAccount {
 	private String Address;
 	private String password;
