@@ -1,4 +1,4 @@
-package emailApp.Services;
+package emailApp.Controller.Service;
 
 import javax.mail.AuthenticationFailedException;
 import javax.mail.Authenticator;

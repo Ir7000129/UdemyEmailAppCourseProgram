@@ -1,4 +1,4 @@
-package emailApp.Services;
+package emailApp.Controller.Service;
 
 import emailApp.Model.EmailTreeItem;
 import javafx.concurrent.Service;
@@ -37,6 +37,7 @@ public class FetchFoldersService extends Service<Void> {
 
     private void handleFolders(Folder[] folders, EmailTreeItem<String> foldersRoot) {
         for(Folder folder: folders){
+        	System.out.println(folder.getName());
             EmailTreeItem<String> emailTreeItem = new EmailTreeItem<String>(folder.getName());
             foldersRoot.getChildren().add((emailTreeItem));
         }

@@ -5,7 +5,7 @@ import java.util.ResourceBundle;
 
 import emailApp.EmailManager;
 import emailApp.Model.EmailAccount;
-import emailApp.Services.LoginService;
+import emailApp.Controller.Service.LoginService;
 import emailApp.view.ViewFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -83,8 +83,8 @@ public class LoginWindowController extends BaseController implements Initializab
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		emailAddressField.setText("appjack42@gmail.com");
-		passwordField.setText("Freak3938");
+//		emailAddressField.setText("appjack42@gmail.com");
+//		passwordField.setText("Freak3938");
 		
 	}
 }
