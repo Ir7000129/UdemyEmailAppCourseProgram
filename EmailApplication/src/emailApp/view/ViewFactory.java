@@ -19,10 +19,15 @@ public class ViewFactory {
     private ArrayList<Stage> activeStages;
     private ColorTheme colorTheme = ColorTheme.DEFAULT;
     private FontSize fontSize = FontSize.MEDIUM;
+    private boolean mainWindowOpen = false;
 
     public ViewFactory(EmailManager emailManager) {
         this.emailManager = emailManager;
         activeStages=new ArrayList<Stage>();
+    }
+    
+    public boolean isMainWindowOpen() {
+    	return mainWindowOpen;
     }
 
     //View Options Handling
@@ -35,6 +40,7 @@ public class ViewFactory {
     public void showMainWindow(){
         BaseController controller = new MainMenuController(this, emailManager,"MainMenu.fxml");
         stageShowing(controller);
+        mainWindowOpen = true;
     }
     public void showOptionsWindow(){
         System.out.println("Options window opened");

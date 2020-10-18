@@ -43,7 +43,6 @@ public class EmailAccount {
 	}
 
 	
-
 	public String getPassword() {
 		return password;
 	}
