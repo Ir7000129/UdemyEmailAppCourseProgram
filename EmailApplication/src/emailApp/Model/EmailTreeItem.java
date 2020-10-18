@@ -2,14 +2,12 @@ package emailApp.Model;
 
 import javafx.scene.control.TreeItem;
 
-public class EmailTreeItem<T> extends TreeItem<T> {
+public class EmailTreeItem<String> extends TreeItem<String> {
 
 	private String name;
 	
 	public EmailTreeItem(String name) {
-		super();
+		super(name);
 		this.name = name;
-	}
-	
-	
+	}	
 }

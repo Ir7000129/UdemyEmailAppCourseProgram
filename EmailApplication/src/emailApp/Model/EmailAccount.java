@@ -1,17 +1,17 @@
 package emailApp.Model;
 
 import java.util.Properties;
-
 import javax.mail.Store;
-
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeView;
 
 public class EmailAccount {
 	private String Address;
 	private String password;
 	private Properties properties;
 	private Store store;
+	
+	public String getAddress() {
+		return Address;
+	}
 	
 	public EmailAccount(String address, String password) {
 		this.Address = address;
@@ -42,9 +42,7 @@ public class EmailAccount {
 		this.store = store;
 	}
 
-	public String getAddress() {
-		return Address;
-	}
+	
 
 	public String getPassword() {
 		return password;
