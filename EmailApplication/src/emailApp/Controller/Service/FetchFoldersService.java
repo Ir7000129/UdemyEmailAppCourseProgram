@@ -51,7 +51,6 @@ public class FetchFoldersService extends Service<Void> {
 
 	private void getMessage(Folder folder, EmailTreeItem<String> emailTreeItem) {
 		Service getMessageService = new Service() {
-
 			@Override
 			protected Task createTask() {
 				return new Task() {
@@ -60,18 +59,19 @@ public class FetchFoldersService extends Service<Void> {
 					if(folder.getType() != folder.HOLDS_FOLDERS) {
 						folder.open(folder.READ_WRITE);
 						int messageSize = folder.getMessageCount();
-						for(int i = messageSize; i > 0; i++) {
-							System.out.println(folder.getMessage(i).getSubject());
+						for(int i = messageSize; i > 0; i--) {
+							emailTreeItem.addEmail(folder.getMessage(i));
 						}
-					
 					}
-				return null;
-				}		
-				
+					return null;
+				}						
 			};
-		
-		};
+		}
 	};
 	getMessageService.start();
-	}
 }
+
+	
+	
+}
+
