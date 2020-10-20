@@ -22,6 +22,10 @@ public class EmailTreeItem<String> extends TreeItem<String> {
 		this.emailMessages = FXCollections.observableArrayList();
 	}	
 	
+	public ObservableList<EmailMessage> getEmailMessages() {
+		return emailMessages;
+	}
+	
 	public void addEmail(Message message) throws MessagingException {
 		boolean isMessageRead = message.getFlags().contains(Flags.Flag.SEEN);
 		EmailMessage emailMessage = new EmailMessage(
@@ -53,4 +57,5 @@ public class EmailTreeItem<String> extends TreeItem<String> {
 			this.setValue(name);
 		}
 	}
+
 }

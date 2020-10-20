@@ -13,7 +13,7 @@ public class EmailMessage {
 	private SimpleStringProperty receipient;
 	private SimpleIntegerProperty size;
 	private SimpleObjectProperty<Date> date;
-	private boolean isRead = false;
+	private boolean isRead;
 	private Message message;
 	
 	public EmailMessage(String subject, String sender, String receipient, int size, Date date, boolean isRead, Message message) {
@@ -47,12 +47,12 @@ public class EmailMessage {
 		return this.date.get();
 	}
 	
-	public boolean getIsRead() {
+	public boolean isRead() {
 		return isRead;
 	}
 	
-	public boolean setIsRead() {
-		return isRead;
+	public void setIsRead(boolean read) {
+		isRead = read;
 	}
 	
 	public Message getMessage() {

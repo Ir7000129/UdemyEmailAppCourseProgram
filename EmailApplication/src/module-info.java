@@ -11,5 +11,5 @@ module FirstJavaFx {
     opens emailApp;
     opens emailApp.view;
     opens emailApp.Controller;
-
+    opens emailApp.Model;
 }
