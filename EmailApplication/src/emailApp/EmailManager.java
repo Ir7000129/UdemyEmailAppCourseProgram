@@ -9,32 +9,33 @@ import java.util.List;
 import javax.mail.Folder;
 
 import emailApp.Controller.Service.FetchFoldersService;
-import emailApp.Controller.Service.FolderListerService;
+import emailApp.Controller.Service.FolderUpdaterService;
 import javafx.scene.control.TreeItem;
 
 public class EmailManager {
 
+    private FolderUpdaterService folderUpdaterService;
     //Folder handling:
     private EmailTreeItem<String> foldersRoot = new EmailTreeItem<String>("");
-    private List<Folder> foldersList = new ArrayList<Folder>();
-    private FolderListerService folderListerService;
-    
-    
-    public List<Folder> getFoldersList() {return this.foldersList;
-	}
 
-	public EmailTreeItem<String> getFoldersRoot(){return foldersRoot;
+    public EmailTreeItem<String> getFoldersRoot(){
+        return foldersRoot;
     }
-	
-	public EmailManager() {
-		folderListerService = new FolderListerService(foldersList);
-		folderListerService.start();
-	}
+
+    private List<Folder> folderList = new ArrayList<Folder>();
+    public  List<Folder> getFolderList(){
+        return this.folderList;
+    }
+
+    public EmailManager(){
+        folderUpdaterService = new FolderUpdaterService(folderList);
+        folderUpdaterService.start();
+    }
 
     public void addEmailAccount(EmailAccount emailAccount){
         EmailTreeItem<String> treeItem = new EmailTreeItem<String>(emailAccount.getAddress());
-        FetchFoldersService fetchFoldersService = new FetchFoldersService(emailAccount.getStore(), treeItem, foldersList);
+        FetchFoldersService fetchFoldersService = new FetchFoldersService(emailAccount.getStore(), treeItem, folderList);
         fetchFoldersService.start();
         foldersRoot.getChildren().add(treeItem);
     }
-}	
+}

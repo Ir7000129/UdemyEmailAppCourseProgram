@@ -8,11 +8,11 @@ import javax.mail.MessagingException;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 
-public class FolderListerService extends Service{
+public class FolderUpdaterService extends Service {
 
 	private List<Folder> foldersList;
 	
-	public FolderListerService(List<Folder> foldersList) {
+	public FolderUpdaterService(List<Folder> foldersList) {
 		super();
 		this.foldersList = foldersList;
 	}
@@ -22,7 +22,7 @@ public class FolderListerService extends Service{
 		return new Task() {
 			@Override
 			protected Object call() throws MessagingException {
-				for(;;) {
+				while(true) {
 					try {
 						Thread.sleep(5000);
 						for (Folder folder: foldersList) {
