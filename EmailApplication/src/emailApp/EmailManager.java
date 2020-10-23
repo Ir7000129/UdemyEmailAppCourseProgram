@@ -1,11 +1,13 @@
 package emailApp;
 
 import emailApp.Model.EmailAccount;
+import emailApp.Model.EmailMessage;
 import emailApp.Model.EmailTreeItem;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.mail.Flags;
 import javax.mail.Folder;
 
 import emailApp.Controller.Service.FetchFoldersService;
@@ -17,8 +19,26 @@ public class EmailManager {
     private FolderUpdaterService folderUpdaterService;
     //Folder handling:
     private EmailTreeItem<String> foldersRoot = new EmailTreeItem<String>("");
+    private EmailMessage selectedMessage;
+    private EmailTreeItem<String> selectedFolder;
 
-    public EmailTreeItem<String> getFoldersRoot(){
+    public EmailMessage getSelectedMessage() {
+		return selectedMessage;
+	}
+
+	public void setSelectedMessage(EmailMessage selectedMessage) {
+		this.selectedMessage = selectedMessage;
+	}
+
+	public EmailTreeItem<String> getSelectedFolder() {
+		return selectedFolder;
+	}
+
+	public void setSelectedFolder(EmailTreeItem<String> selectedFolder) {
+		this.selectedFolder = selectedFolder;
+	}
+
+	public EmailTreeItem<String> getFoldersRoot(){
         return foldersRoot;
     }
 
@@ -38,4 +58,14 @@ public class EmailManager {
         fetchFoldersService.start();
         foldersRoot.getChildren().add(treeItem);
     }
+
+	public void setRead() {
+		try {
+			selectedMessage.setIsRead(true);
+			selectedMessage.getMessage().setFlag(Flags.Flag.SEEN, true);
+			selectedFolder.decrementMessagesCount();
+		} catch (Exception e) {
+		
+		}
+	}
 }

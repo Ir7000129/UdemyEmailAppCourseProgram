@@ -78,7 +78,14 @@ public class MainMenuController extends BaseController implements Initializable{
 	 private void setUpMessageSelection() {
 	        emailsTableView.setOnMouseClicked(event -> {
 	            EmailMessage emailMessage = emailsTableView.getSelectionModel().getSelectedItem();
+	            //letting emailManager know which message is currently selected	
+	            emailManager.setSelectedMessage(emailMessage);
 	            if(emailMessage != null){
+	            	//updating app to change messages to read when opened
+	            	if(!emailMessage.isRead()) {
+	            		emailManager.setRead();
+	            	}
+	            	
 	                messageRendererService.setEmailMessage(emailMessage);
 	                messageRendererService.restart();
 	            }

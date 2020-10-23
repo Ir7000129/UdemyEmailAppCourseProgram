@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class ViewFactory {
     private EmailManager emailManager;
     private ArrayList<Stage> activeStages;
-    private ColorTheme colorTheme = ColorTheme.DEFAULT;
+    private ColorTheme colorTheme = ColorTheme.DARK;
     private FontSize fontSize = FontSize.MEDIUM;
     private boolean mainWindowOpen = false;
 
@@ -25,6 +25,7 @@ public class ViewFactory {
         this.emailManager = emailManager;
         activeStages=new ArrayList<Stage>();
     }
+    
     
     public boolean isMainWindowOpen() {
     	return mainWindowOpen;
