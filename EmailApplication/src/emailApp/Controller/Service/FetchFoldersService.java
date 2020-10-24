@@ -22,7 +22,7 @@ public class FetchFoldersService extends Service {
     private Store store;
     private EmailTreeItem<String> foldersRoot;
     private List<Folder> foldersList;
-    
+ 
     public FetchFoldersService(Store store, EmailTreeItem<String> foldersRoot, List<Folder> foldersList) {
         this.store = store;
         this.foldersRoot = foldersRoot;

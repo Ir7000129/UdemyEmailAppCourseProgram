@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class ViewFactory {
     private EmailManager emailManager;
     private ArrayList<Stage> activeStages;
-    private ColorTheme colorTheme = ColorTheme.DARK;
+    private ColorTheme colorTheme = ColorTheme.DEFAULT;
     private FontSize fontSize = FontSize.MEDIUM;
     private boolean mainWindowOpen = false;
 
@@ -32,17 +32,19 @@ public class ViewFactory {
     }
 
     //View Options Handling
-
+    	//method to open the login window
     public void showLoginWindow(){
         System.out.println("Application running");
         BaseController controller = new LoginWindowController(this, emailManager,"LoginWindow.fxml");
         stageShowing(controller);
     }
+    	//method to open the main window
     public void showMainWindow(){
         BaseController controller = new MainMenuController(this, emailManager,"MainMenu.fxml");
         stageShowing(controller);
         mainWindowOpen = true;
     }
+    	//method to open the options window
     public void showOptionsWindow(){
         System.out.println("Options window opened");
         BaseController controller = new OptionsWindowController(this,emailManager,"OptionsWindow.fxml");
@@ -60,7 +62,7 @@ public class ViewFactory {
 //        activeStages.add(stage);
 //
 //    	}
-
+    	//
     private void stageShowing(BaseController baseController){
         var fxmlLoader = new FXMLLoader(getClass().getResource(baseController.getFxmlName()));
         fxmlLoader.setController(baseController);
@@ -100,7 +102,8 @@ public class ViewFactory {
     public void setFontSize(FontSize fontSize) {
         this.fontSize = fontSize;
     }
-
+    	
+    	//
     public void updateStyles (){
         for(Stage stage:activeStages){
             Scene scene = stage.getScene();

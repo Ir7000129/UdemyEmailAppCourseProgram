@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
 
+
 import emailApp.EmailManager;
 import emailApp.Controller.Service.MessageRendererService;
 import emailApp.Model.EmailMessage;
@@ -13,6 +14,8 @@ import emailApp.view.ViewFactory;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
@@ -23,6 +26,10 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class MainMenuController extends BaseController implements Initializable{
+	
+	//fields use to create menu items for a context menu that has options to delete/ set unread
+	private MenuItem unreadActionMenuItem = new MenuItem("Set as Unread");
+	private MenuItem deleteActionMenuItem = new MenuItem("Delete Message");
 
     @FXML
     private TreeView<String> emailsTreeView;
@@ -69,6 +76,15 @@ public class MainMenuController extends BaseController implements Initializable{
 		setUpBoldRows();
 		setUpMessageRendererService();
 		setUpMessageSelection();
+		setUpContextMenu();
+	}
+	
+	private void setUpContextMenu() {
+		unreadActionMenuItem.setOnAction(e -> emailManager.setUnread());
+		deleteActionMenuItem.setOnAction(e -> {
+			emailManager.deleteMessage();
+			emailsWebView.getEngine().loadContent("");
+		});
 	}
 	
 	private void setUpMessageRendererService() {
@@ -80,6 +96,8 @@ public class MainMenuController extends BaseController implements Initializable{
 	            EmailMessage emailMessage = emailsTableView.getSelectionModel().getSelectedItem();
 	            //letting emailManager know which message is currently selected	
 	            emailManager.setSelectedMessage(emailMessage);
+	            
+	            //con
 	            if(emailMessage != null){
 	            	//updating app to change messages to read when opened
 	            	if(!emailMessage.isRead()) {
@@ -115,6 +133,7 @@ public class MainMenuController extends BaseController implements Initializable{
 	}
 	
 	private void setUpFolderSelection() {
+		//on mouse click (OF emailTreeItem folder, receive messages)
 		emailsTreeView.setOnMouseClicked(e -> {
 			EmailTreeItem<String> item = ((EmailTreeItem<String>)emailsTreeView.getSelectionModel().getSelectedItem());
 			if (item != null) {
@@ -123,8 +142,12 @@ public class MainMenuController extends BaseController implements Initializable{
 		});		
 	}
 	private void setUpEmailsTableView() {
+		
 		senderCol.setCellValueFactory(new PropertyValueFactory<EmailMessage, String>("sender"));
 		dateCol.setCellValueFactory(new PropertyValueFactory<EmailMessage, Date>("date"));
+		
+		//creating a context menu that has two menu items for unread/delete actions
+		emailsTableView.setContextMenu(new ContextMenu(unreadActionMenuItem, deleteActionMenuItem));
 	}
 	
 	private void setUpEmailsTreeView() {
