@@ -17,10 +17,12 @@ import javafx.scene.control.TreeItem;
 public class EmailManager {
 
     private FolderUpdaterService folderUpdaterService;
+    
     //Folder handling:
     private EmailTreeItem<String> foldersRoot = new EmailTreeItem<String>("");
     private EmailMessage selectedMessage;
     private EmailTreeItem<String> selectedFolder;
+    private List<Folder> folderList = new ArrayList<Folder>();
 
     public EmailMessage getSelectedMessage() {
 		return selectedMessage;
@@ -42,7 +44,6 @@ public class EmailManager {
         return foldersRoot;
     }
 
-    private List<Folder> folderList = new ArrayList<Folder>();
     public  List<Folder> getFolderList(){
         return this.folderList;
     }
@@ -57,6 +58,7 @@ public class EmailManager {
         FetchFoldersService fetchFoldersService = new FetchFoldersService(emailAccount.getStore(), treeItem, folderList);
         fetchFoldersService.start();
         foldersRoot.getChildren().add(treeItem);
+        setSelectedFolder(treeItem);
     }
 
 	public void setRead() {
@@ -82,6 +84,7 @@ public class EmailManager {
 	public void deleteMessage() {
 		try {
 			selectedMessage.getMessage().setFlag(Flags.Flag.DELETED, true);
+            selectedFolder.getEmailMessages().remove(selectedMessage);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -79,6 +79,11 @@ public class MainMenuController extends BaseController implements Initializable{
 		setUpContextMenu();
 	}
 	
+	private EmailMessage getSelectedMessage() {
+		EmailMessage emailMessage = emailsTableView.getSelectionModel().getSelectedItem();
+		return emailMessage;
+	}
+	
 	private void setUpContextMenu() {
 		unreadActionMenuItem.setOnAction(e -> emailManager.setUnread());
 		deleteActionMenuItem.setOnAction(e -> {
@@ -93,7 +98,7 @@ public class MainMenuController extends BaseController implements Initializable{
 	
 	 private void setUpMessageSelection() {
 	        emailsTableView.setOnMouseClicked(event -> {
-	            EmailMessage emailMessage = emailsTableView.getSelectionModel().getSelectedItem();
+	            EmailMessage emailMessage =	getSelectedMessage();
 	            //letting emailManager know which message is currently selected	
 	            emailManager.setSelectedMessage(emailMessage);
 	            

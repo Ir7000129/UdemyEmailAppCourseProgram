@@ -17,7 +17,6 @@ public class EmailMessage {
 	private Message message;
 	
 	public EmailMessage(String subject, String sender, String receipient, int size, Date date, boolean isRead, Message message) {
-		super();
 		this.subject = new SimpleStringProperty(subject);
 		this.sender = new SimpleStringProperty(sender);
 		this.receipient = new SimpleStringProperty(receipient);

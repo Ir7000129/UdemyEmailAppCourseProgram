@@ -9,7 +9,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
 
-@SuppressWarnings("hiding")
 public class EmailTreeItem<String> extends TreeItem<String> {
 
 	private String name;

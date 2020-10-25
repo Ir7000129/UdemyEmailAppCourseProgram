@@ -15,28 +15,7 @@ public class FolderUpdaterService extends Service {
 	public FolderUpdaterService(List<Folder> foldersList) {
 		this.foldersList = foldersList;
 	}
-
-//	@Override
-//	protected Task createTask() {
-//		return new Task() {
-//			@Override
-//			protected Object call() throws MessagingException {
-//				while(true) {
-//					try {
-//						Thread.sleep(5000);
-//						for (Folder folder: foldersList) {
-//							if (folder.getType() != folder.HOLDS_FOLDERS && folder.isOpen()) {
-//								folder.getMessageCount();
-//							}
-//						}
-//					} catch (InterruptedException e) {
-//						e.printStackTrace();
-//					}
-//					
-//				}
-//			}
-//		};
-		/*starting thread that runs every 5 seconds to retrieve email as they are recieved by gmail, but due to limitations it will only receive in
+		/*starting thread that runs every 5 seconds to retrieve email as they are recieved by gmail
 		 *  
 		 */
 		 
