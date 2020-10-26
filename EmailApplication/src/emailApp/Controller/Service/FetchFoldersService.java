@@ -22,20 +22,29 @@ public class FetchFoldersService extends Service {
     private Store store;
     private EmailTreeItem<String> foldersRoot;
     private List<Folder> foldersList;
+    private static int  NUMBER_OF_FETCHFOLDERSERVICES_ACTIVE = 0;
+
+
  
     public FetchFoldersService(Store store, EmailTreeItem<String> foldersRoot, List<Folder> foldersList) {
         this.store = store;
         this.foldersRoot = foldersRoot;
         this.foldersList = foldersList;
+        this.setOnSucceeded(e -> NUMBER_OF_FETCHFOLDERSERVICES_ACTIVE--);
     }
 
+    public static boolean noServicesActive() {
+    	return NUMBER_OF_FETCHFOLDERSERVICES_ACTIVE == 0;
+//    		return true;
+//    	} else return false;
+    }
     @Override
     protected Task<Void> createTask() {
         return new Task<Void>() {
             @Override
             protected Void call() throws Exception {
                 fetchFolders();
-                return null;
+                return null;	
             }
         };
     }

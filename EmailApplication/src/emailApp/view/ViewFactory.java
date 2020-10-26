@@ -1,6 +1,7 @@
 package emailApp.view;
 
 import emailApp.Controller.BaseController;
+import emailApp.Controller.ComposeWindowController;
 import emailApp.Controller.LoginWindowController;
 import emailApp.Controller.MainMenuController;
 import emailApp.Controller.OptionsWindowController;
@@ -25,8 +26,7 @@ public class ViewFactory {
         this.emailManager = emailManager;
         activeStages=new ArrayList<Stage>();
     }
-    
-    
+   
     public boolean isMainWindowOpen() {
     	return mainWindowOpen;
     }
@@ -48,6 +48,12 @@ public class ViewFactory {
     public void showOptionsWindow(){
         System.out.println("Options window opened");
         BaseController controller = new OptionsWindowController(this,emailManager,"OptionsWindow.fxml");
+        stageShowing(controller);
+    }
+    
+    public void showComposeWindow(){
+        System.out.println("Compose window opened");
+        BaseController controller = new ComposeWindowController(this,emailManager,"ComposeWindow.fxml");
         stageShowing(controller);
     }
          

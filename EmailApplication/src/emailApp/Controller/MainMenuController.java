@@ -56,6 +56,11 @@ public class MainMenuController extends BaseController implements Initializable{
         Stage stage = (Stage) emailsTableView.getScene().getWindow();
         viewFactory.closeShowingStage(stage);
     }
+    
+    @FXML
+    void openComposeAction() {
+    	viewFactory.showComposeWindow();
+    }
 
     @FXML
     void optionsAction() {

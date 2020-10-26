@@ -4,17 +4,24 @@ import java.util.Properties;
 import javax.mail.Store;
 
 public class EmailAccount {
-	private String Address;
+	private String address;
 	private String password;
 	private Properties properties;
 	private Store store;
 	
 	public String getAddress() {
-		return Address;
+		return address;
 	}
 	
+	
+	@Override
+	public String toString() {
+		return address;
+	}
+
+
 	public EmailAccount(String address, String password) {
-		this.Address = address;
+		this.address = address;
 		this.password = password;
 		properties = new Properties();
 		properties.put("incomingHost", "imap.gmail.com");

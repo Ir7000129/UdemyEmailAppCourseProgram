@@ -24,18 +24,17 @@ public class FolderUpdaterService extends Service {
 		        return new Task() {
 		            @Override
 		            protected Object call() throws Exception {
-		                for (;;){
-		                   try {
-		                       Thread.sleep(5000);
+		                if (FetchFoldersService.noServicesActive()){
+		                   
+//		                       Thread.sleep(5000);
 		                       for (Folder folder: foldersList){
 		                    	   if (folder.getType() != folder.HOLDS_FOLDERS && folder.isOpen()) {
 										folder.getMessageCount();
 									}
 		                       }
-		                   }catch (Exception e){
-		                       e.printStackTrace();
-		                   }
+		                 
 		                }
+						return foldersList;
 		            }
 		        };
 		 }
