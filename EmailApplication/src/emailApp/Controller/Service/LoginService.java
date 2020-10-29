@@ -32,6 +32,7 @@ public class LoginService extends Service<EmailLoginResult> {
 		
 		try {
 			var session = Session.getInstance(emailAccount.getProperties(), authenticator);
+			emailAccount.setSession(session);
 			var store = session.getStore("imaps");
 			store.connect(emailAccount.getProperties().getProperty("incomingHost"),
 					emailAccount.getAddress(),

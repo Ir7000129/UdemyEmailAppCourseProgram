@@ -1,6 +1,7 @@
 package emailApp.view;
 
 import emailApp.Controller.BaseController;
+import emailApp.Controller.ComposeWindowController;
 //import emailApp.Controller.ComposeWindowController;
 import emailApp.Controller.LoginWindowController;
 import emailApp.Controller.MainMenuController;
