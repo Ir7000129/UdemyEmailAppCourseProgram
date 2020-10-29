@@ -1,20 +1,36 @@
 package emailApp.Model;
 
 import java.util.Properties;
+
+import javax.mail.Session;
 import javax.mail.Store;
 
 public class EmailAccount {
-	private String Address;
+	private String address;
 	private String password;
 	private Properties properties;
 	private Store store;
+	private Session session;
 	
-	public String getAddress() {
-		return Address;
+	public Session getSession() {
+		return session;
 	}
-	
+
+	public void setSession(Session session) {
+		this.session = session;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+		
+	@Override
+	public String toString() {
+		return address;
+	}
+
 	public EmailAccount(String address, String password) {
-		this.Address = address;
+		this.address = address;
 		this.password = password;
 		properties = new Properties();
 		properties.put("incomingHost", "imap.gmail.com");

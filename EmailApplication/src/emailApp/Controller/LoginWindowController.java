@@ -41,9 +41,10 @@ public class LoginWindowController extends BaseController implements Initializab
         		
         		switch (emailLoginResult) {
         		case SUCCESS:
-        			System.out.println("Login Successful" + emailAccount + "\n" + "Main Window Running");
+        			System.out.println("Login Successful " + emailAccount );
         			if(!viewFactory.isMainWindowOpen()) {
                         viewFactory.showMainWindow();
+                        System.out.println("Main Window Running");
         			}
                     viewFactory.updateStyles();
                     Stage stage = (Stage) errorHandler.getScene().getWindow();
@@ -63,6 +64,10 @@ public class LoginWindowController extends BaseController implements Initializab
     }
 
 	private boolean fieldsAreValid() {
+		if(emailAddressField.getText() == emailManager.getEmailAccounts().toString()) {
+			errorHandler.setText("Email Account Already Added");
+			System.out.println("Email Account Already Added");
+		}
 		if(emailAddressField.getText().isEmpty() && passwordField.getText().isEmpty()) {
 			errorHandler.setText("Please Fill In Credentials");
 			System.out.println("Error: fields empty");

@@ -1,6 +1,46 @@
 *{
     -fx-background-color: white;
+	-fx-text-fill:black;
 }
+
+.table-view{
+	-fx-border-color: #8f8f96;
+}
+
+.table-view:hover {
+	    -fx-background-color: pink;
+	    	-fx-focus-color:pink;
+}
+
+
+.tree-view{
+	-fx-font-color:black;
+	-fx-focus-color:black;
+	-fx-border-color:black;
+	-fx-background-color: #8f8f96;
+		-fx-text-fill:black;
+	
+}
+
+
+
+.tree-table-row:hover{
+	-fx-background-color: #8f8734;
+}
+
+.menu-bar {
+    -fx-base: derive(#d0d0d0,-70%);
+ 
+	-fx-text-fill:black;
+    
+}
+
+.menu-bar:hover {
+		-fx-text-fill:black;
+	
+}
+
+
 Label{
 	-fx-text-fill:black;
 }
@@ -37,3 +77,4 @@ Slider .thumb{
 Slider .thumb:hover{
 	-fx-background-color:#b1b1b3;
 }
+

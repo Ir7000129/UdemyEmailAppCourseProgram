@@ -6,16 +6,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/sprider/Documents/JavaLIbs/java.activation.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/home/sprider/Documents/JavaLIbs/javax.mail.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="lib" path="/home/sprider/Documents/JavaLIbs/untitled folder/javafx-sdk-11.0.2/lib/javafx.base.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
@@ -52,6 +42,16 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/home/sprider/Documents/JavaLIbs/untitled folder/javafx-sdk-11.0.2/lib/javafx-swt.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/sprider/Documents/JavaLIbs/java.activation.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/sprider/Documents/JavaLIbs/javax.mail.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>

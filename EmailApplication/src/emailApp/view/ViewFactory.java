@@ -1,6 +1,8 @@
 package emailApp.view;
 
 import emailApp.Controller.BaseController;
+import emailApp.Controller.ComposeWindowController;
+//import emailApp.Controller.ComposeWindowController;
 import emailApp.Controller.LoginWindowController;
 import emailApp.Controller.MainMenuController;
 import emailApp.Controller.OptionsWindowController;
@@ -25,40 +27,37 @@ public class ViewFactory {
         this.emailManager = emailManager;
         activeStages=new ArrayList<Stage>();
     }
-    
+   
     public boolean isMainWindowOpen() {
     	return mainWindowOpen;
     }
 
     //View Options Handling
-
+    	//method to open the login window
     public void showLoginWindow(){
         System.out.println("Application running");
         BaseController controller = new LoginWindowController(this, emailManager,"LoginWindow.fxml");
         stageShowing(controller);
     }
+    	//method to open the main window
     public void showMainWindow(){
         BaseController controller = new MainMenuController(this, emailManager,"MainMenu.fxml");
         stageShowing(controller);
         mainWindowOpen = true;
     }
+    	//method to open the options window
     public void showOptionsWindow(){
         System.out.println("Options window opened");
         BaseController controller = new OptionsWindowController(this,emailManager,"OptionsWindow.fxml");
         stageShowing(controller);
     }
+    
+    public void showComposeWindow(){
+        System.out.println("Compose window opened");
+        BaseController controller = new ComposeWindowController(this,emailManager,"ComposeWindow.fxml");
+        stageShowing(controller);
+    }
          
-//    public void showLoginWindow() throws IOException {
-//    	var fxmlLoader = new FXMLLoader(getClass().getResource("LoginWindow.fxml"));
-//    	Parent parent = fxmlLoader.load();
-//    	var scene = new Scene(parent);
-//    	var stage = new Stage();
-//    	stage.setScene(scene);
-//    	stage.initStyle(StageStyle.TRANSPARENT);
-//    	stage.show();
-//        activeStages.add(stage);
-//
-//    	}
 
     private void stageShowing(BaseController baseController){
         var fxmlLoader = new FXMLLoader(getClass().getResource(baseController.getFxmlName()));
@@ -99,7 +98,8 @@ public class ViewFactory {
     public void setFontSize(FontSize fontSize) {
         this.fontSize = fontSize;
     }
-
+    	
+    	//
     public void updateStyles (){
         for(Stage stage:activeStages){
             Scene scene = stage.getScene();
