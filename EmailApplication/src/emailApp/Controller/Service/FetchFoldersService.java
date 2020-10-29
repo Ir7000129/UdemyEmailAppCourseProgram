@@ -52,6 +52,7 @@ public class FetchFoldersService extends Service {
     private void fetchFolders() throws MessagingException {
         Folder[] folders = store.getDefaultFolder().list();
         handleFolders(folders, foldersRoot);
+        NUMBER_OF_FETCHFOLDERSERVICES_ACTIVE++;
     }
 
     private void handleFolders(Folder[] folders, EmailTreeItem<String> foldersRoot) throws MessagingException {

@@ -1,7 +1,7 @@
 package emailApp.view;
 
 import emailApp.Controller.BaseController;
-import emailApp.Controller.ComposeWindowController;
+//import emailApp.Controller.ComposeWindowController;
 import emailApp.Controller.LoginWindowController;
 import emailApp.Controller.MainMenuController;
 import emailApp.Controller.OptionsWindowController;
@@ -57,18 +57,7 @@ public class ViewFactory {
         stageShowing(controller);
     }
          
-//    public void showLoginWindow() throws IOException {
-//    	var fxmlLoader = new FXMLLoader(getClass().getResource("LoginWindow.fxml"));
-//    	Parent parent = fxmlLoader.load();
-//    	var scene = new Scene(parent);
-//    	var stage = new Stage();
-//    	stage.setScene(scene);
-//    	stage.initStyle(StageStyle.TRANSPARENT);
-//    	stage.show();
-//        activeStages.add(stage);
-//
-//    	}
-    	//
+
     private void stageShowing(BaseController baseController){
         var fxmlLoader = new FXMLLoader(getClass().getResource(baseController.getFxmlName()));
         fxmlLoader.setController(baseController);
