@@ -15,12 +15,14 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ContextMenu;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TreeView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -39,6 +41,18 @@ public class MainMenuController extends BaseController implements Initializable{
 
     @FXML
     private WebView emailsWebView;
+    
+    @FXML
+    private AnchorPane detailsAnchor;
+
+    @FXML
+    private Label subjectLabel;
+
+    @FXML
+    private Label senderLabel;
+
+    @FXML
+    private Label recipientLabel;
     
     @FXML
     private TableColumn<EmailMessage, String> senderCol;
@@ -93,6 +107,9 @@ public class MainMenuController extends BaseController implements Initializable{
 		unreadActionMenuItem.setOnAction(e -> emailManager.setUnread());
 		deleteActionMenuItem.setOnAction(e -> {
 			emailManager.deleteMessage();
+			subjectLabel.setText("");
+			recipientLabel.setText("");
+			senderLabel.setText("");
 			emailsWebView.getEngine().loadContent("");
 		});
 	}
@@ -103,9 +120,20 @@ public class MainMenuController extends BaseController implements Initializable{
 	
 	 private void setUpMessageSelection() {
 	        emailsTableView.setOnMouseClicked(event -> {
+	        	emailsWebView.getEngine().loadContent("");
 	            EmailMessage emailMessage =	getSelectedMessage();
 	            //letting emailManager know which message is currently selected	
 	            emailManager.setSelectedMessage(emailMessage);
+	            recipientLabel.setText(emailMessage.getReceipient().get());
+	            senderLabel.setText(emailMessage.getSender());
+	            if(emailMessage.getSubject() != "") {
+		            subjectLabel.setText(emailMessage.getSubject());
+	            } else {
+	            	subjectLabel.setText("-(No Subject)-");
+	            }
+	            detailsAnchor.setVisible(true);
+	            emailsWebView.setVisible(true);
+	            
 	            
 	            //con
 	            if(emailMessage != null){
@@ -118,6 +146,8 @@ public class MainMenuController extends BaseController implements Initializable{
 	                messageRendererService.restart();
 	            }
 	        });
+	        
+	        
 	    }
 	
 	private void setUpBoldRows() {
@@ -147,6 +177,7 @@ public class MainMenuController extends BaseController implements Initializable{
 		emailsTreeView.setOnMouseClicked(e -> {
 			EmailTreeItem<String> item = ((EmailTreeItem<String>)emailsTreeView.getSelectionModel().getSelectedItem());
 			if (item != null) {
+                emailManager.setSelectedFolder(item);
 				emailsTableView.setItems(item.getEmailMessages());
 			}
 		});		

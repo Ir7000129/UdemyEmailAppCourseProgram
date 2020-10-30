@@ -1,6 +1,7 @@
 package emailApp.Controller.Service;
 
 import emailApp.Model.EmailTreeItem;
+import emailApp.view.IconResolver;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.fxml.Initializable;
@@ -23,6 +24,7 @@ public class FetchFoldersService extends Service {
     private EmailTreeItem<String> foldersRoot;
     private List<Folder> foldersList;
     private static int  NUMBER_OF_FETCHFOLDERSERVICES_ACTIVE = 0;
+    private IconResolver iconResolver = new IconResolver();
 
 
  
@@ -30,14 +32,14 @@ public class FetchFoldersService extends Service {
         this.store = store;
         this.foldersRoot = foldersRoot;
         this.foldersList = foldersList;
-        this.setOnSucceeded(e -> NUMBER_OF_FETCHFOLDERSERVICES_ACTIVE--);
+        this.setOnSucceeded(e -> NUMBER_OF_FETCHFOLDERSERVICES_ACTIVE = 0);
     }
 
     public static boolean noServicesActive() {
     	return NUMBER_OF_FETCHFOLDERSERVICES_ACTIVE == 0;
-//    		return true;
-//    	} else return false;
     }
+    
+    
     @Override
     protected Task<Void> createTask() {
         return new Task<Void>() {
@@ -59,6 +61,7 @@ public class FetchFoldersService extends Service {
         for(Folder folder: folders){
             foldersList.add(folder);
             EmailTreeItem<String> emailTreeItem = new EmailTreeItem<String>(folder.getName());
+            emailTreeItem.setGraphic(iconResolver.getIconFolder(folder.getName()));
             foldersRoot.getChildren().add((emailTreeItem));
             	 foldersRoot.setExpanded(true);
             	 getMessage(folder, emailTreeItem);

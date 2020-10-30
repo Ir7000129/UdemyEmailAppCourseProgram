@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -7,9 +8,10 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TreeView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane prefHeight="704.0" prefWidth="1133.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane minHeight="704.0" minWidth="1133.0" prefHeight="704.0" prefWidth="1133.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="1133.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
@@ -33,12 +35,23 @@
         </menus>
       </MenuBar>
       <TreeView fx:id="emailsTreeView" layoutY="27.0" prefHeight="679.0" prefWidth="234.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="27.0" />
-      <TableView fx:id="emailsTableView" layoutX="234.0" layoutY="29.0" prefHeight="675.0" prefWidth="460.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="29.0">
+      <TableView fx:id="emailsTableView" layoutX="234.0" layoutY="28.0" prefHeight="675.0" prefWidth="460.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="234.0" AnchorPane.topAnchor="28.0">
         <columns>
           <TableColumn fx:id="senderCol" editable="false" prefWidth="363.0" text="Details" />
           <TableColumn fx:id="dateCol" editable="false" minWidth="0.0" prefWidth="96.0" text="Date" />
         </columns>
       </TableView>
-      <WebView fx:id="emailsWebView" layoutX="694.0" layoutY="29.0" prefHeight="677.0" prefWidth="439.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="694.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="29.0" />
+      <WebView fx:id="emailsWebView" layoutX="694.0" layoutY="136.0" prefHeight="677.0" prefWidth="439.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="694.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="136.0" />
+      <AnchorPane fx:id="detailsAnchor" layoutX="693.0" layoutY="29.0" prefHeight="105.0" prefWidth="440.0" AnchorPane.leftAnchor="693.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="29.0">
+         <children>
+            <Label fx:id="subjectLabel" layoutX="24.0" layoutY="13.0" textOverrun="WORD_ELLIPSIS" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="13.0">
+               <font>
+                  <Font name="KacstFarsi" size="23.0" />
+               </font>
+            </Label>
+            <Label fx:id="senderLabel" layoutX="24.0" layoutY="51.0" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="51.0" />
+            <Label fx:id="recipientLabel" layoutX="24.0" layoutY="74.0" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="74.0" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

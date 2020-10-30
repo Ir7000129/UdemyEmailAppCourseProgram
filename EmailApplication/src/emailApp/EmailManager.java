@@ -3,6 +3,7 @@ package emailApp;
 import emailApp.Model.EmailAccount;
 import emailApp.Model.EmailMessage;
 import emailApp.Model.EmailTreeItem;
+import emailApp.view.IconResolver;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,7 @@ public class EmailManager {
     private EmailTreeItem<String> selectedFolder;
     private ObservableList<EmailAccount> emailAccounts = FXCollections.observableArrayList();
     private List<Folder> folderList = new ArrayList<Folder>();
+    private IconResolver iconResolver = new IconResolver();
 
     public ObservableList<EmailAccount> getEmailAccounts(){
     	return emailAccounts;
@@ -63,6 +65,7 @@ public class EmailManager {
     public void addEmailAccount(EmailAccount emailAccount){
         emailAccounts.add(emailAccount);
     	EmailTreeItem<String> treeItem = new EmailTreeItem<String>(emailAccount.getAddress());
+    	treeItem.setGraphic(iconResolver.getIconFolder(emailAccount.getAddress()));
         FetchFoldersService fetchFoldersService = new FetchFoldersService(emailAccount.getStore(), treeItem, folderList);
         fetchFoldersService.start();
         foldersRoot.getChildren().add(treeItem);
@@ -72,6 +75,7 @@ public class EmailManager {
 		try {
 			selectedMessage.setIsRead(true);
 			selectedMessage.getMessage().setFlag(Flags.Flag.SEEN, true);
+			Thread.sleep(1000);
 			selectedFolder.decrementMessagesCount();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -82,6 +86,7 @@ public class EmailManager {
 		try {
 			selectedMessage.setIsRead(false);
 			selectedMessage.getMessage().setFlag(Flags.Flag.SEEN, false);
+			Thread.sleep(1000);
 			selectedFolder.incrementMessagesCount();
 		} catch (Exception e) {
 			e.printStackTrace();
