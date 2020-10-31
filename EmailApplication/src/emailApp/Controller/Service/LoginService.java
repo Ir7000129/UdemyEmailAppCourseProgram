@@ -50,7 +50,7 @@ public class LoginService extends Service<EmailLoginResult> {
 			return EmailLoginResult.FAILED_BY_UNEXPECTED_ERROR;
 		} catch (Exception e) {
 			e.printStackTrace();
-			return EmailLoginResult.FAILED_BY_UNEXPECTED_ERROR;
+		return EmailLoginResult.FAILED_BY_UNEXPECTED_ERROR;
 		}
 		return EmailLoginResult.SUCCESS;
 	}
@@ -63,5 +63,13 @@ public class LoginService extends Service<EmailLoginResult> {
 	            return login();
 	        }
 	    };
+	}
+
+	public static void main(String[] args) {
+		int[] arr = {1,2,3};
+		arr[0] = arr[1];
+//		arr[1] = arr[2];
+//		arr[2] = arr[0];
+		System.out.println(arr);
 	}
 }

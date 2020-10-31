@@ -37,29 +37,29 @@ public class ViewFactory {
     public void showLoginWindow(){
         System.out.println("Application running");
         BaseController controller = new LoginWindowController(this, emailManager,"LoginWindow.fxml");
-        stageShowing(controller);
+        stageShowing(controller, false);
     }
     	//method to open the main window
     public void showMainWindow(){
         BaseController controller = new MainMenuController(this, emailManager,"MainMenu.fxml");
-        stageShowing(controller);
+        stageShowing(controller, true);
         mainWindowOpen = true;
     }
     	//method to open the options window
     public void showOptionsWindow(){
         System.out.println("Options window opened");
         BaseController controller = new OptionsWindowController(this,emailManager,"OptionsWindow.fxml");
-        stageShowing(controller);
+        stageShowing(controller, false);
     }
     
     public void showComposeWindow(){
         System.out.println("Compose window opened");
         BaseController controller = new ComposeWindowController(this,emailManager,"ComposeWindow.fxml");
-        stageShowing(controller);
+        stageShowing(controller, false);
     }
          
 
-    private void stageShowing(BaseController baseController){
+    private void stageShowing(BaseController baseController, boolean minSize){
         var fxmlLoader = new FXMLLoader(getClass().getResource(baseController.getFxmlName()));
         fxmlLoader.setController(baseController);
         Parent parent;
@@ -73,6 +73,11 @@ public class ViewFactory {
         var scene = new Scene(parent);
         var stage = new Stage();
         stage.setScene(scene);
+        if(minSize) {
+        	stage.setMinWidth(1400);
+        	stage.setMinHeight(840);
+        }
+ 
 //        stage.initStyle(StageStyle.TRANSPARENT);
         stage.show();
         activeStages.add(stage);

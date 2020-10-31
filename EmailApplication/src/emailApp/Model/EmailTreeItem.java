@@ -15,16 +15,19 @@ public class EmailTreeItem<String> extends TreeItem<String> {
 	private ObservableList<EmailMessage> emailMessages;
 	private int unReadMessagesCount;
 	
+	//constructor
 	public EmailTreeItem(String name) {
 		super(name);
 		this.name = name;
 		this.emailMessages = FXCollections.observableArrayList();
 	}	
 	
+	//getters
 	public ObservableList<EmailMessage> getEmailMessages() {
 		return emailMessages;
 	}
 	
+	//methods
 	public void addEmail(Message message) throws MessagingException {
 		EmailMessage emailMessage = fetchEmails(message);
 		emailMessages.add(emailMessage);
