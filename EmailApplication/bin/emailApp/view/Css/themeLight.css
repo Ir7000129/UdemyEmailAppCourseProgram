@@ -1,6 +1,14 @@
 *{
-    -fx-background-color: white;
-	-fx-text-fill:black;
+	-fx-my-background-color-color: white;
+    -fx-my-background-color-color-alt: #e0e0e0;
+    -fx-my-font-color: #394345;
+    -fx-my-font-color-highlighted: #394345;
+	-fx-my-default-element-color: #e0e0e0;
+	-fx-my-error-text-fill: #690f0f;
+}
+
+.container{
+    -fx-background-color: -fx-my-background-color-color;
 }
 
 .table-view{
@@ -8,8 +16,8 @@
 }
 
 .table-view:hover {
-	    -fx-background-color: pink;
-	    	-fx-focus-color:pink;
+	-fx-background-color: pink;
+	-fx-focus-color:pink;
 }
 
 
@@ -21,8 +29,6 @@
 		-fx-text-fill:black;
 	
 }
-
-
 
 .tree-table-row:hover{
 	-fx-background-color: #8f8734;
@@ -36,10 +42,15 @@
 }
 
 .menu-bar:hover {
-		-fx-text-fill:black;
-	
+		-fx-text-fill:black;	
 }
 
+.scroll-bar .thumb {
+     -fx-background-color: #708b91;
+ }
+.scroll-bar{
+      -fx-background-color: #c5d6d9;
+}
 
 Label{
 	-fx-text-fill:black;

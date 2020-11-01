@@ -13,7 +13,7 @@
 
 <AnchorPane minHeight="704.0" minWidth="1133.0" prefHeight="704.0" prefWidth="1133.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="1133.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="1133.0" styleClass="container" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
@@ -53,5 +53,6 @@
             <Label fx:id="recipientLabel" layoutX="24.0" layoutY="74.0" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="74.0" />
          </children>
       </AnchorPane>
+      <Label fx:id="emptyLabel" layoutX="841.0" layoutY="367.0" text="Select a message to view" AnchorPane.bottomAnchor="322.0" AnchorPane.topAnchor="367.0" />
    </children>
 </AnchorPane>
