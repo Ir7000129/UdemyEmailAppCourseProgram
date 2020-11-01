@@ -26,6 +26,11 @@ public class IconResolver {
 				imageView = new ImageView(new Image(getClass().getResourceAsStream("Icons/sent1.png")));
 			}else if(lowerCaseFolderName.contains("spam")) {
 				imageView = new ImageView(new Image(getClass().getResourceAsStream("Icons/spam.png")));
+			} else if(lowerCaseFolderName.contains("gmail")) {
+				imageView = new ImageView(new Image(getClass().getResourceAsStream("Icons/spam.png")));
+			} else {
+				imageView = new ImageView(new Image(getClass().getResourceAsStream("Icons/folder.png")));
+
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

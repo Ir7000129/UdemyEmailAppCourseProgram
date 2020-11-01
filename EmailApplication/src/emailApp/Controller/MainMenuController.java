@@ -3,6 +3,7 @@ package emailApp.Controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 
@@ -50,6 +51,9 @@ public class MainMenuController extends BaseController implements Initializable{
 
     @FXML
     private Label senderLabel;
+    
+    @FXML
+    private Label emptyLabel;
 
     @FXML
     private Label recipientLabel;
@@ -74,6 +78,7 @@ public class MainMenuController extends BaseController implements Initializable{
     @FXML
     void openComposeAction() {
     	viewFactory.showComposeWindow();
+    	viewFactory.updateStyles();
     }
 
     @FXML
@@ -116,6 +121,30 @@ public class MainMenuController extends BaseController implements Initializable{
 	
 	private void setUpMessageRendererService() {
 		messageRendererService = new MessageRendererService(emailsWebView.getEngine()); 
+	} 
+	
+	public static void main(String[] args) {
+		java.util.Map<String, String > map = new HashMap<String, String>();
+		map.put("a", "aaa");
+		map.put("b", "asa");
+		map.put("c", "cunt");
+
+		
+		  String a = map.get("a");
+		  String b = map.get("b");
+		  
+		  if (a == b) {
+		    map.remove("a");
+		    map.remove("b");
+		  }
+		  System.out.println(map);
+		  
+		  Integer [] strings = new Integer[10];
+		  double j = Math.random();
+		  for(Integer string: strings) {
+			  strings[strings.length -1] = (int) j; 
+		  }
+		  System.out.println(strings);
 	}
 	
 	 private void setUpMessageSelection() {
@@ -124,13 +153,17 @@ public class MainMenuController extends BaseController implements Initializable{
 	            EmailMessage emailMessage =	getSelectedMessage();
 	            //letting emailManager know which message is currently selected	
 	            emailManager.setSelectedMessage(emailMessage);
+	            
 	            recipientLabel.setText(emailMessage.getReceipient().get());
 	            senderLabel.setText(emailMessage.getSender());
-	            if(emailMessage.getSubject() != "") {
+	            
+	            if(emailMessage.getSubject() != null) {
 		            subjectLabel.setText(emailMessage.getSubject());
 	            } else {
 	            	subjectLabel.setText("-(No Subject)-");
 	            }
+	            
+	            emptyLabel.setVisible(false);
 	            detailsAnchor.setVisible(true);
 	            emailsWebView.setVisible(true);
 	            
